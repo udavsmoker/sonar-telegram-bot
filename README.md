@@ -60,7 +60,7 @@ Generates a quick dossier on any company.
 
 4. **Launch**
    ```bash
-   python main.py
+   python run.py
    ```
 
 ---
