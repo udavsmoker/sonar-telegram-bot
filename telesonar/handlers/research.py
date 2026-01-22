@@ -42,41 +42,41 @@ async def cmd_factcheck(message: Message):
     await status_msg.delete()
     await message.reply(response, parse_mode="HTML", link_preview_options=LinkPreviewOptions(is_disabled=True))
 
-@research_router.message(Command("cve"))
-async def cmd_cve(message: Message):
-    user_input = get_input_text(message, "cve")
+# @research_router.message(Command("cve"))
+# async def cmd_cve(message: Message):
+#     user_input = get_input_text(message, "cve")
     
-    if not user_input:
-        await message.reply(
-            "ℹ️ <b>Usage:</b>\n"
-            "1. Reply to a message with <code>/cve</code>\n"
-            "2. Or type <code>/cve &lt;CVE-ID or Technology Name&gt;</code>",
-            parse_mode="HTML"
-        )
-        return
+#     if not user_input:
+#         await message.reply(
+#             "ℹ️ <b>Usage:</b>\n"
+#             "1. Reply to a message with <code>/cve</code>\n"
+#             "2. Or type <code>/cve &lt;CVE-ID or Technology Name&gt;</code>",
+#             parse_mode="HTML"
+#         )
+#         return
 
-    status_msg = await message.reply("🛡️ <i>Scanning vulnerability database...</i>", parse_mode="HTML")
+#     status_msg = await message.reply("🛡️ <i>Scanning vulnerability database...</i>", parse_mode="HTML")
 
-    system_prompt = (
-        "You are a Cybersecurity Analyst. The user input contains a CVE ID or a technology name.\n"
-        "Search for the latest vulnerability data.\n"
-        "RULES:\n"
-        "1. DO NOT output conversational filler.\n"
-        "2. OUTPUT ONLY THE RESPONSE IN HTML FORMAT. DO NOT USE MARKDOWN.\n"
-        "3. Detect the user's language (Russian/English) and reply in the SAME language.\n"
-        "4. SOURCES SECTION MUST CONTAIN ONLY LINKS. No text explanations in the sources block.\n\n"
-        "Output Template:\n"
-        "1. 🛡️ <b>Vulnerability</b>: Name/ID.\n"
-        "2. 📉 <b>Severity</b>: CVSS Score (if available).\n"
-        "3. 💥 <b>Exploits</b>: Publicly available? (Yes/No).\n"
-        "4. 💊 <b>Mitigation</b>: How to fix. Use [1], [2] format for citations.\n"
-        "<blockquote expandable><b>Sources</b>:\n- [Link 1 Title] (URL)\n- [Link 2 Title] (URL)</blockquote>"
-    )
+#     system_prompt = (
+#         "You are a Cybersecurity Analyst. The user input contains a CVE ID or a technology name.\n"
+#         "Search for the latest vulnerability data.\n"
+#         "RULES:\n"
+#         "1. DO NOT output conversational filler.\n"
+#         "2. OUTPUT ONLY THE RESPONSE IN HTML FORMAT. DO NOT USE MARKDOWN.\n"
+#         "3. Detect the user's language (Russian/English) and reply in the SAME language.\n"
+#         "4. SOURCES SECTION MUST CONTAIN ONLY LINKS. No text explanations in the sources block.\n\n"
+#         "Output Template:\n"
+#         "1. 🛡️ <b>Vulnerability</b>: Name/ID.\n"
+#         "2. 📉 <b>Severity</b>: CVSS Score (if available).\n"
+#         "3. 💥 <b>Exploits</b>: Publicly available? (Yes/No).\n"
+#         "4. 💊 <b>Mitigation</b>: How to fix. Use [1], [2] format for citations.\n"
+#         "<blockquote expandable><b>Sources</b>:\n- [Link 1 Title] (URL)\n- [Link 2 Title] (URL)</blockquote>"
+#     )
 
-    response = await query_perplexity(user_input, system_prompt)
+#     response = await query_perplexity(user_input, system_prompt)
     
-    await status_msg.delete()
-    await message.reply(response, parse_mode="HTML", link_preview_options=LinkPreviewOptions(is_disabled=True))
+#     await status_msg.delete()
+#     await message.reply(response, parse_mode="HTML", link_preview_options=LinkPreviewOptions(is_disabled=True))
 
 @research_router.message(Command("osint"))
 async def cmd_osint(message: Message):

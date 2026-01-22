@@ -1,34 +1,39 @@
 # TeleSonar AI 📡
 
 A lightweight, no-nonsense intelligence bot for Telegram.  
-Powered by **Perplexity Sonar**, it turns chat messages into actionable research data in seconds.
+Powered by **Perplexity Sonar** and **real-time web scraping**.
 
 Designed for developers, analysts, and skeptics who need facts, not hallucinations.
 
 ## ⚡ Capabilities
 
-### 1. `/factcheck` – Truth Verification
-Validates claims against authoritative web sources. Neutralizes toxic language to focus purely on the factual query.
-- **Input:** *"They said the earth is flat"*
-- **Output:** Verdict (False), Dry Facts, Citation Links.
+### AI Research (Perplexity Sonar)
 
-### 2. `/cve` – Vulnerability Scanner
-Instant lookups for CVE IDs or technology names. Perfect for quick security triage.
-- **Returns:** Severity (CVSS), Exploit availability, Mitigation steps.
-- **Format:** HTML report with clean foldable sources.
+| Command | Description |
+|---------|-------------|
+| `/factcheck` | Validates claims against authoritative sources |
+| `/cve` | Vulnerability lookup via NVD API (CVE-ID or tech name) |
+| `/osint` | Corporate profiling: leadership, tech stack, news |
 
-### 3. `/osint` – Corporate Profiling
-Generates a quick dossier on any company.
-- **Data points:** Leadership, Tech Stack, Industry Focus, Recent News Headlines.
+### Web Scraping
+
+| Command | Description |
+|---------|-------------|
+| `/trending` | GitHub Trending repos with CSV export |
+| `/trending python` | Filter by language |
+| `/trending rust weekly` | Filter by language + time range |
+
+**Time ranges:** `daily`, `weekly`, `monthly`
 
 ---
 
 ## 🛠 Tech Stack
 
 - **Python 3.10+**
-- **Aiogram 3.x** (Async Telegram API)
-- **Perplexity API** (Sonar Model)
-- **Aiohttp** (Async requests)
+- **Aiogram 3.x** — Async Telegram API
+- **Perplexity API** — Sonar Model for AI research
+- **BeautifulSoup + lxml** — Web scraping
+- **Aiohttp** — Async HTTP client
 
 ## 🚀 Deployment
 

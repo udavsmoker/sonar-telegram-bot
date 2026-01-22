@@ -38,3 +38,9 @@ htmlcov/
 # OS specific
 .DS_Store
 Thumbs.db
+
+# Data/Cache
+data/
+
+# Copilot instructions
+.github/copilot-instructions.md

@@ -2,6 +2,8 @@ from aiogram import Bot, Dispatcher
 from telesonar.config import TELEGRAM_BOT_TOKEN
 from telesonar.handlers.user import user_router
 from telesonar.handlers.research import research_router
+from telesonar.handlers.cve_scraper import cve_router
+from telesonar.handlers.github_scraper import github_router
 from telesonar.middlewares.throttling import ThrottlingMiddleware
 
 class TeleSonarBot:
@@ -12,6 +14,8 @@ class TeleSonarBot:
         self.dp.message.middleware(ThrottlingMiddleware(limit=5.0))
         
         self.dp.include_router(user_router)
+        self.dp.include_router(cve_router)
+        self.dp.include_router(github_router)
         self.dp.include_router(research_router)
 
     async def start(self):
